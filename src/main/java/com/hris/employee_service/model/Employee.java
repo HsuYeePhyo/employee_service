@@ -18,14 +18,12 @@ import jakarta.validation.constraints.Size;
 public class Employee implements Serializable  {
     public Employee (){super();}
     @Id
-    @NotNull
-    @GenericGenerator(name = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
-    @Column(name = "employee_id")
-    private String employeeId;
+    private String id;
     @NotNull
     private String fullname;
-    @NotNull
+//    @NotNull
     @Column(name = "company_id")
     private String companyId;
 
@@ -48,15 +46,6 @@ public class Employee implements Serializable  {
     private String bankaccount;
     private Double salary;
     private String user_id;
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
 
 
 }
