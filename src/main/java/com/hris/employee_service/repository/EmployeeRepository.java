@@ -12,7 +12,7 @@ import java.util.Optional;
 //Data Accesses Layer
 @RepositoryRestResource(collectionResourceRel = "employee", path = "employee")
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
-
-    List<Employee> findByCompanyId(@Param("companyId") String companyId);
-
+    @Query("select e from Employee e where e.department.id = :departmentId")
+    List<Employee> findByDepartmentId(@Param("departmentId") String departmentId);
+    Optional<Employee> findByEmail(@Param("email") String email);
 }

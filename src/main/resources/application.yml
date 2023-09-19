@@ -1,15 +1,15 @@
 spring:
+  jpa:
+    hibernate:
+      database: POSTGRESQL
+      show-sql: true                            # Show SQL statements in logs (for debugging)
+      hibernate:
+      ddl-auto: create                        # Database schema update strategy (options: none, validate, update, create, create-drop)
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres  # Database URL
     username: postgres                        # Database username
     password: postgres                    # Database password
     driver-class-name: org.postgresql.Driver  # Database driver
-  jpa:
-    hibernate:
-      ddl-auto: update                        # Database schema update strategy (options: none, validate, update, create, create-drop)
-    show-sql: true                            # Show SQL statements in logs (for debugging)
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect  # Hibernate dialect for PostgreSQL
-      jdbc:
-        time-zone: UTC                        # Set the time zone (optional)
+
+
+

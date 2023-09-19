@@ -18,45 +18,38 @@ import jakarta.validation.constraints.Size;
 public class Employee implements Serializable  {
     public Employee (){super();}
     @Id
-    @NotNull
-    @GenericGenerator(name = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
-    @Column(name = "employee_id")
     private String employeeId;
-    @NotNull
-    private String fullname;
-    @NotNull
-    @Column(name = "company_id")
+    private String fullName;
     private String companyId;
 
-
-    private String department_id;
+    @ManyToOne
+   // @JoinColumn(name ="departmentId", referencedColumnName = "departmentId")
+    private Department department;
+    @ManyToOne
+    private Company company;
     @Size(max = 50)
     @Email
     @NotNull
     private String email;
     @Size(max = 200)
     private String address;
-    private String contactnumber;
+    private String contactNumber;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dob;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date startdate;
+    private Date startDate;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date enddate;
-    private String jobgrade_id;
-    private String bankaccount;
+    private Date endDate;
+    private String jobGradeId;
+    private String bankAccount;
     private Double salary;
-    private String user_id;
-
+    private String userId;
     public String getEmployeeId() {
         return employeeId;
     }
-
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
-
-
-
 }

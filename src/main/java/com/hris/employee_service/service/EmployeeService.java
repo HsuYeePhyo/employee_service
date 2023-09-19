@@ -8,6 +8,9 @@ package com.hris.employee_service.service;
         import java.util.List;
         import java.util.Optional;
 
+        import java.util.UUID;
+        import java.util.logging.Logger;
+
 @Service
 public class EmployeeService {
 
@@ -21,19 +24,22 @@ public class EmployeeService {
     // Business logic methods
 
     public List<Employee> getAllEmployees() {
-        return (List<Employee>) employeeRepository.findAll();
+        return employeeRepository.findAll();
     }
 
     public Optional<Employee> getEmployeeById(String employeeId) {
         return employeeRepository.findById(employeeId);
     }
 
-    public List<Employee> getEmployeesByCompanyId(String companyId) {
-        return employeeRepository.findByCompanyId(companyId);
+    public List<Employee> getEmployeesByDepartmentId(String departmentId) {
+        return employeeRepository.findByDepartmentId(departmentId);
     }
-
     public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+Optional<Employee> existingEmp = employeeRepository.findByEmail(employee.getEmail());
+if(existingEmp.isPresent()){
+    throw  new IllegalStateException("Email taken");
+}
+return employeeRepository.save(employee);
     }
 
     public void deleteEmployee(String id) {
