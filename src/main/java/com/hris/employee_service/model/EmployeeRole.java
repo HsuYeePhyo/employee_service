@@ -15,6 +15,8 @@ public class EmployeeRole implements Serializable {
     private String id;
     @Enumerated(EnumType.STRING)
     private EmpRole name;
+
+
     public EmployeeRole() { super();}
     public EmployeeRole(EmpRole role){
         this.name = role;

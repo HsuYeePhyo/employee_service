@@ -18,12 +18,16 @@ package com.hris.employee_service.controller;
 public class EmployeeController {
     private final CompanyService companyService;
     @Autowired
-    private EmployeeService employeeService;
-    private DepartmentService departmentService;
+    private final EmployeeService employeeService;
+    private final DepartmentService departmentService;
 
     @Autowired
-    public EmployeeController(CompanyService companyService) {
+    public EmployeeController(CompanyService companyService, EmployeeService employeeService, DepartmentService departmentService) {
+
         this.companyService = companyService;
+        this.employeeService = employeeService;
+        this.departmentService = departmentService;
+
     }
     //Read
     @GetMapping("")
@@ -36,8 +40,8 @@ public class EmployeeController {
     }
     //employees
     @GetMapping("/{id}/employees")
-    public List<Employee> getAllCompanyEmployees(@PathVariable Long id) {
-        return employeeService.getEmployeeByCompanyId(id);
+    public ResponseEntity<List<Employee>> getAllCompanyEmployees(@PathVariable Long id) {
+        return ResponseEntity.ok(employeeService.getEmployeeByCompanyId(id));
     }
     @GetMapping("/{id}/{employeeId}")
     public Optional<Employee> getEmployee(@PathVariable String employeeId) {

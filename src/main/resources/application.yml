@@ -10,6 +10,3 @@ spring:
     username: postgres                        # Database username
     password: postgres                    # Database password
     driver-class-name: org.postgresql.Driver  # Database driver
-
-
-

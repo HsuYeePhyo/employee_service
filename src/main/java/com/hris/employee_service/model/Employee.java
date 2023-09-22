@@ -6,8 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
+import java.util.Set;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
@@ -25,9 +24,7 @@ public class Employee implements Serializable  {
     private String employeeId;
     private String fullName;
     private Long companyId;
-
     @ManyToOne
-   // @JoinColumn(name ="departmentId", referencedColumnName = "departmentId")
     private Department department;
     @Size(max = 50)
     @Email
@@ -46,5 +43,11 @@ public class Employee implements Serializable  {
     private String bankAccount;
     private Double salary;
     private String userId;
-    private List<EmployeeRole> empRoles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "employee_roles",
+            joinColumns = @JoinColumn(name = "employee_id"),//column for Employee
+            inverseJoinColumns = @JoinColumn(name = "role_id") // column for EmployeeRole
+    )
+    private Set<EmployeeRole> empRoles;
 }
