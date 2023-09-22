@@ -5,10 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Generated;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
-import java.util.List;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,7 +18,6 @@ public class Company implements Serializable {
 
     private static int next=1;
     public Company () {super();
-    //    this.companyId = String.valueOf(next++);
         }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +28,7 @@ public class Company implements Serializable {
 
     private String address;
     @DateTimeFormat(pattern = "dd-Mon-yyyy")
-    private Date onboardingDate;
+    private Date onBoardingDate;
     @DateTimeFormat(pattern = "dd-Mon-yyyy")
-    private Date offboardingDate;
-    @OneToMany(mappedBy = "company")
-    private List<Employee> employees;
+    private Date offBoardingDate;
 }

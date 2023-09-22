@@ -4,7 +4,7 @@ spring:
       database: POSTGRESQL
       show-sql: true                            # Show SQL statements in logs (for debugging)
       hibernate:
-      ddl-auto: create                        # Database schema update strategy (options: none, validate, update, create, create-drop)
+      ddl-auto: update                        # Database schema update strategy (options: none, validate, update, create, create-drop)
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres  # Database URL
     username: postgres                        # Database username

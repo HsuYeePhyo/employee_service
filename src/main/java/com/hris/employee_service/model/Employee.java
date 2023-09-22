@@ -6,6 +6,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
@@ -22,13 +24,11 @@ public class Employee implements Serializable  {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
     private String employeeId;
     private String fullName;
-    private String companyId;
+    private Long companyId;
 
     @ManyToOne
    // @JoinColumn(name ="departmentId", referencedColumnName = "departmentId")
     private Department department;
-    @ManyToOne
-    private Company company;
     @Size(max = 50)
     @Email
     @NotNull
@@ -46,10 +46,5 @@ public class Employee implements Serializable  {
     private String bankAccount;
     private Double salary;
     private String userId;
-    public String getEmployeeId() {
-        return employeeId;
-    }
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
+    private List<EmployeeRole> empRoles;
 }
