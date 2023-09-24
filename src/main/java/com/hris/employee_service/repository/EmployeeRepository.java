@@ -13,10 +13,10 @@ import java.util.Optional;
 //Data Accesses Layer
 //@RepositoryRestResource(collectionResourceRel = "employee", path = "employee")
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
-    @Query("select e from Employee e LEFT JOIN FETCH e.empRoles where e.department.id = :departmentId")
+   @Query("select e from Employee e where e.department.id = :departmentId")
     List<Employee> findByDepartmentId(@Param("departmentId") String departmentId);
-    @Query("select e from Employee e LEFT JOIN FETCH e.empRoles where e.email = :email")
+   @Query("select e from Employee e where e.email = :email")
     Optional<Employee> findByEmail(@Param("email") String email);
-    @Query("SELECT e FROM Employee e LEFT JOIN FETCH e.empRoles WHERE e.companyId = :companyId")
+    @Query("SELECT e FROM Employee e WHERE e.companyId = :companyId")
     List<Employee> findByCompanyId(@Param("companyId") Long companyId);
 }

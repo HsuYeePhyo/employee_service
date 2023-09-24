@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 
@@ -16,8 +15,7 @@ import java.io.Serializable;
 public class Department implements Serializable {
     public Department () { super();}
     @Id
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String departmentId;
     private String departmentName;
     private String departmentDesc;

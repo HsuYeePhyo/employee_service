@@ -52,6 +52,10 @@ public class EmployeeController {
     public List<Department> getDepartments(@PathVariable Long id){
         return departmentService.getDeptByCompanyId(id);
     }
+    @GetMapping("/{id}/department/{deptId}")
+    public Optional<Department> getDepartment(@PathVariable String deptId){
+        return departmentService.getDepartment(deptId);
+    }
     @GetMapping("/{id}/department/{deptId}/employees")
     public List<Employee> getEmployeeByDepartmentId(@PathVariable String deptId){
         return employeeService.getEmployeesByDepartmentId(deptId);
@@ -65,7 +69,7 @@ public class EmployeeController {
     public Company saveCompany(@RequestBody Company com){
         return companyService.saveCompany(com);
     }
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/employee")
     public Employee saveEmployee(@RequestBody Employee employee, @PathVariable Long id) {
         return employeeService.saveEmployee(employee, id);
     }
@@ -77,14 +81,10 @@ public class EmployeeController {
     public Employee updateEmployee(@PathVariable Long id, String employeeId, @RequestBody Employee updateEmp) {
         return employeeService.updateEmployee(id, employeeId, updateEmp);
     }
-    @PatchMapping("/{id}/{employeeId}")
-    public Employee patchEmployee(@PathVariable Long id, String employeeId, @RequestBody Employee updateEmp) {
-        return employeeService.patchEmployee(id, employeeId, updateEmp);
-    }
     //department
     @PostMapping("/{id}/department")
-    public Department saveDepartment(@RequestBody Department dept, @PathVariable Long compId) {
-        return departmentService.saveDepartment(dept, compId);
+    public Department saveDepartment(@RequestBody Department dept, @PathVariable Long id) {
+        return departmentService.saveDepartment(dept, id);
     }
 
     //Delete
@@ -97,7 +97,7 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
     }
     @DeleteMapping("{id}/{deptId}")
-    public void delteDepartment(@PathVariable String deptId){
+    public void deleteDepartment(@PathVariable String deptId){
         departmentService.deleteDepartment(deptId);
     }
 }
