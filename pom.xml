@@ -15,8 +15,8 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
-		<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
-		<sonar.organization>2f65aa1a47308504907062a86d0ee9a5ed79bff0</sonar.organization>
+		<sonar.organization>microserviced-based-hr-system-1</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
