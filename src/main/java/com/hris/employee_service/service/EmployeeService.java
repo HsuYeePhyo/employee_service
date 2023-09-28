@@ -2,10 +2,10 @@ package com.hris.employee_service.service;
 
         import com.hris.employee_service.model.Employee;
         import com.hris.employee_service.model.EmpRole;
-        import com.hris.employee_service.model.EmployeeRole;
         import com.hris.employee_service.repository.CompanyRepository;
         import com.hris.employee_service.repository.EmployeeRepository;
         import com.hris.employee_service.repository.EmployeeRoleRepository;
+        import io.swagger.v3.oas.annotations.Hidden;
         import jakarta.persistence.EntityNotFoundException;
         import lombok.extern.slf4j.Slf4j;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ package com.hris.employee_service.service;
         import java.util.*;
 
 // Business logic methods
+@Hidden//hide swagger UI end point
 @Service
 @Slf4j
 public class EmployeeService {

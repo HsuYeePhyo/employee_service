@@ -3,6 +3,7 @@ package com.hris.employee_service.service;
 import com.hris.employee_service.model.Department;
 import com.hris.employee_service.repository.CompanyRepository;
 import com.hris.employee_service.repository.DepartmentRepository;
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Hidden//hide swagger UI end point
 @Slf4j
 @Service
 public class DepartmentService {
@@ -37,6 +38,8 @@ public Department saveDepartment(Department dept, Long companyId){
 }
     public void deleteDepartment(String id){
         departmentRepository.deleteById(id);
-        log.info("Department {} is deleted", departmentRepository.findById(id).get().getDepartmentName());
+        Department dep = departmentRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Department with id " + id + " not found"));
+        log.info("Department {} is deleted", dep.getDepartmentName());
     }
 }

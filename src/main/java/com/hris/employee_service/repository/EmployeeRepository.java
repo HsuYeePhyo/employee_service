@@ -1,6 +1,7 @@
 package com.hris.employee_service.repository;
 
 import com.hris.employee_service.model.Employee;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-
+@Hidden//hide swagger UI end point
 @Repository
 //Data Accesses Layer
 //@RepositoryRestResource(collectionResourceRel = "employee", path = "employee")
