@@ -14,7 +14,7 @@ package com.hris.employee_service.controller;
 
 //API layer
 @RestController
-@RequestMapping("api/company")
+@RequestMapping("api") //no method at main api
 public class EmployeeController {
     private final CompanyService companyService;
     @Autowired
@@ -30,37 +30,50 @@ public class EmployeeController {
 
     }
     //Read
-    @GetMapping("")
+    @GetMapping("/company")
     public List<Company> getAllCompany(){
         return companyService.getAllCompany();
     }
-    @GetMapping("/{id}")
+    @GetMapping("/employees")
+    public List<Employee> getAllEmployees(){
+        return employeeService.getAllEmployees();
+    }
+    @GetMapping("/employee/userid/{userid}")
+    public Optional<Employee> getEmployeeByUserId(@PathVariable String userid){
+        return employeeService.getEmployeeByUserId(userid);
+    }
+    @GetMapping("/employee/email/{email}")
+    public Optional<Employee> getEmployeeByEmail(@PathVariable String email){
+    return employeeService.getEmployeeByEmail(email);
+    }
+    @GetMapping("/company/{id}")
     public Optional<Company> getCompanyById(@PathVariable Long id){
         return companyService.getCompanyById(id);
     }
     //employees
-    @GetMapping("/{id}/employees")
+    @GetMapping("/company/{id}/employees")
     public ResponseEntity<List<Employee>> getAllCompanyEmployees(@PathVariable Long id) {
         return ResponseEntity.ok(employeeService.getEmployeeByCompanyId(id));
     }
-    @GetMapping("/{id}/{employeeId}")
+    @GetMapping("/company/{id}/{employeeId}")
     public Optional<Employee> getEmployee(@PathVariable String employeeId) {
         return employeeService.getEmployeeById(employeeId);
     }
     //department
-    @GetMapping("/{id}/departments")
+    @GetMapping("/company/{id}/departments")
     public List<Department> getDepartments(@PathVariable Long id){
         return departmentService.getDeptByCompanyId(id);
     }
-    @GetMapping("/{id}/department/{deptId}")
+    @GetMapping("/company/department/{deptId}")
     public Optional<Department> getDepartment(@PathVariable String deptId){
         return departmentService.getDepartment(deptId);
     }
-    @GetMapping("/{id}/department/{deptId}/employees")
+    @GetMapping("/company/department/{deptId}/employees")
     public List<Employee> getEmployeeByDepartmentId(@PathVariable String deptId){
         return employeeService.getEmployeesByDepartmentId(deptId);
     }
-    @GetMapping("/{id}/department/{deptId}/employee/{employeeId}")
+    //same method as getEmployee
+    @GetMapping("/company/department/employee/{employeeId}")
     public Optional<Employee> getDepartmentEmployee(@PathVariable String employeeId) {
         return employeeService.getEmployeeById(employeeId);
     }
@@ -69,34 +82,34 @@ public class EmployeeController {
     public Company saveCompany(@RequestBody Company com){
         return companyService.saveCompany(com);
     }
-    @PostMapping("/{id}/employee")
+    @PostMapping("/company/{id}/employee")
     public Employee saveEmployee(@RequestBody Employee employee, @PathVariable Long id) {
         return employeeService.saveEmployee(employee, id);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/company/{id}")
     public Company updateCompany(@PathVariable Long id,@RequestBody Company updateCom) {
         return companyService.updateCompany(id, updateCom);
     }
-    @PutMapping("/{id}/{employeeId}")
+    @PutMapping("/company/{id}/{employeeId}")
     public Employee updateEmployee(@PathVariable Long id, String employeeId, @RequestBody Employee updateEmp) {
         return employeeService.updateEmployee(id, employeeId, updateEmp);
     }
     //department
-    @PostMapping("/{id}/department")
+    @PostMapping("/company/{id}/department")
     public Department saveDepartment(@RequestBody Department dept, @PathVariable Long id) {
         return departmentService.saveDepartment(dept, id);
     }
 
     //Delete
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/company/{id}")
     public void deleteCompany(@PathVariable Long id) {
         companyService.deleteCompany(id);
     }
-    @DeleteMapping("/{id}/{employeeId}")
+    @DeleteMapping("/company/{id}/{employeeId}")
     public void deleteEmployee(@PathVariable String employeeId) {
         employeeService.deleteEmployee(employeeId);
     }
-    @DeleteMapping("{id}/{deptId}")
+    @DeleteMapping("/company/{id}/{deptId}")
     public void deleteDepartment(@PathVariable String deptId){
         departmentService.deleteDepartment(deptId);
     }

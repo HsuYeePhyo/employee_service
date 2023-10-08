@@ -31,6 +31,13 @@ public class EmployeeService {
     public Optional<Employee> getEmployeeById(String employeeId) {
         return employeeRepository.findById(employeeId);
     }
+    public Optional<Employee> getEmployeeByEmail(String email) {
+        return employeeRepository.findByEmail(email);
+    }
+    public Optional<Employee> getEmployeeByUserId(String userId) {
+        return employeeRepository.findByUserId(userId);
+    }
+    public List<Employee> getAllEmployees() {return employeeRepository.findAll();}
     public List<Employee> getEmployeeByCompanyId(Long id){
         return employeeRepository.findByCompanyId(id);
     }

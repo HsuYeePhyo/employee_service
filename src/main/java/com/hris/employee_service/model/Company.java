@@ -24,7 +24,6 @@ public class Company implements Serializable {
     private String companyName;
     private String information;
     private String contactNumber;
-
     private String address;
     @DateTimeFormat(pattern = "dd-Mon-yyyy")
     private Date onBoardingDate;
