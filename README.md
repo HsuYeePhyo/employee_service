@@ -13,3 +13,8 @@ RECRUITER_ROLE,
 MANAGER_ROLE
 
 * when running application for first time: to uncomment to insert for employee roles at model.EmpRoleConfig
+
+**Swagger**
+http://localhost:8080/swagger-ui.html
+
+document: /emp-api-docs
