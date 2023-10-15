@@ -3,9 +3,11 @@ package com.hris.employee_service.controller;
         import com.hris.employee_service.model.Company;
         import com.hris.employee_service.model.Department;
         import com.hris.employee_service.model.Employee;
+        import com.hris.employee_service.model.EmployeeRole;
         import com.hris.employee_service.service.CompanyService;
         import com.hris.employee_service.service.DepartmentService;
         import com.hris.employee_service.service.EmployeeService;
+        import com.hris.employee_service.service.EmpRoleService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;
@@ -20,19 +22,24 @@ public class EmployeeController {
     @Autowired
     private final EmployeeService employeeService;
     private final DepartmentService departmentService;
+    private final EmpRoleService empRoleService;
 
     @Autowired
-    public EmployeeController(CompanyService companyService, EmployeeService employeeService, DepartmentService departmentService) {
+    public EmployeeController(CompanyService companyService, EmployeeService employeeService, DepartmentService departmentService, EmpRoleService empRoleService) {
 
         this.companyService = companyService;
         this.employeeService = employeeService;
         this.departmentService = departmentService;
-
+        this.empRoleService = empRoleService;
     }
     //Read
     @GetMapping("/company")
     public List<Company> getAllCompany(){
         return companyService.getAllCompany();
+    }
+    @GetMapping("/company/empRoles")
+    public List<EmployeeRole> getAllEmpRoles(){
+        return empRoleService.getAllEmpRoles();
     }
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
@@ -91,7 +98,7 @@ public class EmployeeController {
         return companyService.updateCompany(id, updateCom);
     }
     @PutMapping("/company/{id}/{employeeId}")
-    public Employee updateEmployee(@PathVariable Long id, String employeeId, @RequestBody Employee updateEmp) {
+    public Employee updateEmployee(@PathVariable Long id, @PathVariable String employeeId, @RequestBody Employee updateEmp) {
         return employeeService.updateEmployee(id, employeeId, updateEmp);
     }
     //department

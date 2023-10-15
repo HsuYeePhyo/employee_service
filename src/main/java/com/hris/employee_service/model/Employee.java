@@ -48,4 +48,18 @@ public class Employee implements Serializable  {
             inverseJoinColumns = @JoinColumn(name = "role_id") // column for EmployeeRole
     )
     private Set<EmployeeRole> empRoles = new HashSet<>();
+    public Employee (String employeeId, String fullName) {
+        this.employeeId = employeeId;
+        this.fullName = fullName;
+    }
+    public Employee (String employeeId, String fullName, Long companyId) {
+        this.employeeId = employeeId;
+        this.fullName = fullName;
+        this.companyId = companyId;
+    }
+    public Employee (String employeeId, String fullName, String email) {
+        this.employeeId = employeeId;
+        this.fullName = fullName;
+        this.email = email;
+    }
 }

@@ -18,6 +18,10 @@ public class Company implements Serializable {
     private static int next=1;
     public Company () {super();
         }
+    public Company (Long companyId, String companyName) {
+        this.companyId = companyId;
+        this.companyName = companyName;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long companyId;
