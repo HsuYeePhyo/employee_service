@@ -33,15 +33,9 @@ spec:
                 name: employee-service
           env:
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: auth-service-db
-                  key: username
+              value: postgres
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: auth-service-db
-                  key: password
+              value: password
           image: 876708361421.dkr.ecr.ap-southeast-1.amazonaws.com/employee_service:v1
           imagePullPolicy: Always
           ports:
