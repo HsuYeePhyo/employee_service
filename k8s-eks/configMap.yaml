@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: employee-service
+data:
+  APP_NAME: employee-service
+  APP_PROFILE: sit

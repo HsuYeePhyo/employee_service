@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+    database: POSTGRESQL
+    show-sql: true # Show SQL statements in logs (for debugging)
+    ddl-auto: update # Database schema update strategy (options: none, validate, update, create, create-drop)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+message: "development environment"
