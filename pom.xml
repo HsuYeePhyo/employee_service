@@ -17,6 +17,7 @@
 		<java.version>11</java.version>
 		<sonar.organization>microserviced-based-hr-system-1</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<start-class>com.hris.employee_service.EmployeeServiceApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
