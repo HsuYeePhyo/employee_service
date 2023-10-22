@@ -12,9 +12,11 @@
 	<artifactId>employee_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>employee_service</name>
-	<description>Demo project for Spring Boot</description>
+	<description>HRIS employee service using Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.organization>microserviced-based-hr-system-1</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,15 +55,25 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
+		</dependency>
 	</dependencies>
-
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-
 </project>
