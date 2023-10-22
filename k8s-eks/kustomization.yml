@@ -3,7 +3,9 @@ kind: Kustomization
 namespace: employee-service
 resources:
   - namespace.yaml
+  - secrets.yaml
   - configMap.yaml
   - serviceAccount.yaml
   - service.yaml
+  - service-pgsql.yaml
   - deployment.yaml
