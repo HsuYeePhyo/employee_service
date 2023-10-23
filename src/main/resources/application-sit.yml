@@ -10,7 +10,7 @@ spring:
   datasource:
     url: jdbc:postgresql://auth-service-db.cpih5nqynn3w.ap-southeast-1.rds.amazonaws.com:5432/auth-service-db
     username: postgres
-    password: postgres
+    password: password
     driver-class-name: org.postgresql.Driver
 
 message: "sit environment"
