@@ -8,7 +8,7 @@ spring:
     show-sql: true # Show SQL statements in logs (for debugging)
     ddl-auto: update # Database schema update strategy (options: none, validate, update, create, create-drop)
   datasource:
-    url: jdbc:postgresql://auth-service-db.cpih5nqynn3w.ap-southeast-1.rds.amazonaws.com:5432/
+    url: jdbc:postgresql://auth-service-db.cpih5nqynn3w.ap-southeast-1.rds.amazonaws.com:5432/postgres
     username: postgres
     password: password
     driver-class-name: org.postgresql.Driver
